@@ -1,0 +1,2 @@
+# ISCs
+iSunCoin Standard Consensus
