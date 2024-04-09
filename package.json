@@ -1,0 +1,29 @@
+{
+  "name": "iscs",
+  "version": "0.1.0",
+  "description": "iSunCoin Standard Consensus",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CAFECA-IO/ISCs.git"
+  },
+  "keywords": [
+    "iSunCoin",
+    "smart",
+    "contract",
+    "standard",
+    "blockchain"
+  ],
+  "author": "CAFECA",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/CAFECA-IO/ISCs/issues"
+  },
+  "homepage": "https://github.com/CAFECA-IO/ISCs#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
