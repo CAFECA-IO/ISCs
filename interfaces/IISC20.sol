@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity >=0.8.0 <0.9.0;
 
-interface IERC20 {
+interface ISC20 {
   event Approval(address indexed owner, address indexed spender, uint value);
   event Transfer(address indexed from, address indexed to, uint value);
   event Minted(address indexed operator, address indexed to, uint amount, bytes data, bytes operatorData);
@@ -21,5 +21,5 @@ interface IERC20 {
   function transferFrom(address from, address to, uint value) external returns (bool);
   function mint(address to, uint amount, bytes calldata data) external returns (bool);
   function burn(uint amount, bytes calldata data) external returns (bool);
-  function burnFrom(address from, address to, uint value, bytes calldata data) external returns (bool);
+  function burnFrom(address from, address to, uint value) external returns (bool);
 }

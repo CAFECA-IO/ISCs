@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.0 <0.9.0;
+
+pragma solidity >=0.7.0 <0.9.0;
 
 contract ERC20 {
+  event Approval(address indexed owner, address indexed spender, uint value);
+  event Transfer(address indexed from, address indexed to, uint value);
+
   string public name;
   string public symbol;
-  uint8 public decimals = 18;
-  uint public totalSupply = 0;
+  uint8 public decimals;
+  uint public totalSupply;
   mapping(address => uint) public balanceOf;
   mapping(address => mapping(address => uint)) public allowance;
 
@@ -17,28 +21,23 @@ contract ERC20 {
     balanceOf[msg.sender] = _totalSupply;
   }
 
-  event Approval(address indexed owner, address indexed spender, uint value);
-  event Transfer(address indexed from, address indexed to, uint value);
-
   function approve(address spender, uint value) external returns (bool) {
-    // TODO: safe math
     allowance[msg.sender][spender] = value;
     emit Approval(msg.sender, spender, value);
     return true;
   }
-
   function transfer(address to, uint value) external returns (bool) {
-    require(balanceOf[msg.sender] >= value, "ERC20: transfer amount exceeds balance");
     // TODO: safe math
+    require(balanceOf[msg.sender] >= value, "ERC20: transfer amount exceeds balance");
     balanceOf[msg.sender] -= value;
     balanceOf[to] += value;
     emit Transfer(msg.sender, to, value);
     return true;
   }
-
   function transferFrom(address from, address to, uint value) external returns (bool) {
-    require(allowance[from][msg.sender] >= value, "ERC20: transfer amount exceeds allowance");
     // TODO: safe math
+    require(allowance[from][msg.sender] >= value, "ERC20: transfer amount exceeds allowance");
+    require(balanceOf[from] >= value, "ERC20: transfer amount exceeds balance");
     allowance[from][msg.sender] -= value;
     balanceOf[from] -= value;
     balanceOf[to] += value;
